@@ -1,7 +1,7 @@
 package social.spielapp.android.net;
 
 import kotlin.NotImplementedError;
-import com.squareup.okhttp3;
+import okhttp3.*;
 
 public class Network {
     public static void sendMessage(String message) {
