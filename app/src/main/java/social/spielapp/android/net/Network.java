@@ -2,12 +2,16 @@ package social.spielapp.android.net;
 
 import kotlin.NotImplementedError;
 import okhttp3.*;
+import org.json.*;
 
 public class Network {
     private static WebSocket webSocket;
 
-    public static void sendMessage(String message) {
-        throw new NotImplementedError();
+    public static void sendMessage(String message, int channel) {
+        JSONObject obj = new JSONObject();
+        obj.put("path", "/v1/channel/write");
+        obj.put("message", new JSONObject().put("content", message));
+        WebSocket.send(obj.toString());
     }
 
     public static void onMessageReceive(String message) {
