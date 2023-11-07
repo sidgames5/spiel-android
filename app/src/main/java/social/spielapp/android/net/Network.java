@@ -14,7 +14,7 @@ public class Network {
         if (webSocket != null) {
             JSONObject obj = new JSONObject();
             obj.put("path", "/v1/channel/write");
-            obj.put("message", new JSONObject().put("content", message));
+            obj.put("message", message.toJsonObject());
             webSocket.send(obj.toString());
         } else {
             throw new IllegalStateException("Websocket not yet initialized");
