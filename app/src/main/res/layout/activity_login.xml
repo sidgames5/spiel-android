@@ -81,8 +81,11 @@
             android:id="@+id/textNoAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:text="@string/no_account" />
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/no_account"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
