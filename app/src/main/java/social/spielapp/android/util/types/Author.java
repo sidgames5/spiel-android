@@ -1,5 +1,7 @@
 package social.spielapp.android.util.types;
 
+import androidx.annotation.NonNull;
+
 import java.net.URI;
 
 public class Author {
@@ -11,5 +13,15 @@ public class Author {
         this.username = username;
         this.displayName = displayName;
         this.picture = picture;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "{" +
+                "username='" + username + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", picture=" + picture +
+                '}';
     }
 }

@@ -1,5 +1,7 @@
 package social.spielapp.android.util.types;
 
+import androidx.annotation.NonNull;
+
 import java.util.UUID;
 
 public class Message {
@@ -14,5 +16,16 @@ public class Message {
         this.timestamp = timestamp;
         this.uuid = UUID.randomUUID();
         // TODO: add crc32
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "{" +
+                "content='" + content + '\'' +
+                ", author=" + author +
+                ", timestamp=" + timestamp +
+                ", uuid=" + uuid +
+                '}';
     }
 }
