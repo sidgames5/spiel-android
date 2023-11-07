@@ -11,10 +11,10 @@ public class Network {
     private static WebSocket webSocket;
 
     public static void sendMessage(Message message, int channel) throws JSONException {
-        JSONObject obj = new JSONObject();
-        obj.put("path", "/v1/channel/write");
-        obj.put("message", new JSONObject().put("content", message));
         if (webSocket != null) {
+            JSONObject obj = new JSONObject();
+            obj.put("path", "/v1/channel/write");
+            obj.put("message", new JSONObject().put("content", message));
             webSocket.send(obj.toString());
         } else {
             throw new IllegalStateException("Websocket not yet initialized");
