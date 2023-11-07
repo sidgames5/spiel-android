@@ -64,7 +64,7 @@
             android:layout_marginTop="@dimen/_16sdp"
             android:background="@drawable/background_input"
             android:hint="@string/password"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:importantForAutofill="yes"
             android:inputType="textPassword"
             android:paddingStart="@dimen/_16sdp"
