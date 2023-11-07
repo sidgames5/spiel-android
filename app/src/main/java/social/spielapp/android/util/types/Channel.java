@@ -2,7 +2,11 @@ package social.spielapp.android.util.types;
 
 import androidx.annotation.NonNull;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Channel {
     public final int id;
@@ -23,5 +27,17 @@ public class Channel {
                 ", name='" + name + '\'' +
                 ", authors=" + authors +
                 '}';
+    }
+
+    public Map<String, String> toMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", String.valueOf(id));
+        map.put("name", name);
+        map.put("authors", authors.toString());
+        return map;
+    }
+
+    public JSONObject toJsonObject() {
+        return new JSONObject(this.toMap());
     }
 }

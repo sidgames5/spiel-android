@@ -2,6 +2,10 @@ package social.spielapp.android.util.types;
 
 import androidx.annotation.NonNull;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Message {
@@ -27,5 +31,18 @@ public class Message {
                 ", timestamp=" + timestamp +
                 ", uuid=" + uuid +
                 '}';
+    }
+
+    public Map<String, String> toMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("content", content);
+        map.put("author", author.toMap().toString());
+        map.put("timestamp", String.valueOf(timestamp));
+        map.put("uuid", uuid.toString());
+        return map;
+    }
+
+    public JSONObject toJsonObject() {
+        return new JSONObject(this.toMap());
     }
 }

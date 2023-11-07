@@ -2,7 +2,11 @@ package social.spielapp.android.util.types;
 
 import androidx.annotation.NonNull;
 
+import org.json.JSONObject;
+
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User extends Author {
     public final String passwordHash;
@@ -21,5 +25,15 @@ public class User extends Author {
                 ", displayName='" + displayName + '\'' +
                 ", picture=" + picture +
                 '}';
+    }
+
+    public Map<String, String> toMap() {
+        Map<String, String> map = super.toMap();
+        map.put("passwordHash", passwordHash);
+        return map;
+    }
+
+    public JSONObject toJsonObject() {
+        return new JSONObject(this.toMap());
     }
 }
