@@ -1,13 +1,10 @@
 package social.spielapp.android.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-import social.spielapp.android.R;
-import social.spielapp.android.databinding.ActivityLoginBinding;
+import androidx.appcompat.app.AppCompatActivity;
+
 import social.spielapp.android.databinding.ActivityWelcomeBinding;
 
 public class WelcomeActivity extends AppCompatActivity {
