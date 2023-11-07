@@ -1,7 +1,11 @@
 package social.spielapp.android.net;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import kotlin.NotImplementedError;
 import okhttp3.*;
+import okio.ByteString;
 import social.spielapp.android.util.types.Channel;
 import social.spielapp.android.util.types.Message;
 
@@ -42,7 +46,43 @@ public class Network {
     }
 
     public static void createWebsocket() {
-        throw new NotImplementedError();
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url("ws://localhost:8001")
+                .build();
+
+        webSocket = client.newWebSocket(request, new WebSocketListener() {
+            @Override
+            public void onClosed(@NonNull WebSocket webSocket, int code, @NonNull String reason) {
+                super.onClosed(webSocket, code, reason);
+            }
+
+            @Override
+            public void onClosing(@NonNull WebSocket webSocket, int code, @NonNull String reason) {
+                super.onClosing(webSocket, code, reason);
+            }
+
+            @Override
+            public void onFailure(@NonNull WebSocket webSocket, @NonNull Throwable t, @Nullable Response response) {
+                super.onFailure(webSocket, t, response);
+            }
+
+            @Override
+            public void onMessage(@NonNull WebSocket webSocket, @NonNull String text) {
+                super.onMessage(webSocket, text);
+            }
+
+            @Override
+            public void onMessage(@NonNull WebSocket webSocket, @NonNull ByteString bytes) {
+                super.onMessage(webSocket, bytes);
+            }
+
+            @Override
+            public void onOpen(@NonNull WebSocket webSocket, @NonNull Response response) {
+                super.onOpen(webSocket, response);
+            }
+        });
     }
 
     public static WebSocket getWebSocket() {
