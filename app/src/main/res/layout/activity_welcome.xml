@@ -4,38 +4,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.WelcomeActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="137dp"
-        android:layout_height="87dp"
-        android:text="@string/app_name"
-        android:textAlignment="center"
-        android:textColor="@color/primary"
-        android:textSize="60sp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/primary"
-        android:onClick="register"
-        android:text="@string/register"
-        android:textColor="@color/white"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="341dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/primary"
-        android:onClick="login"
-        android:text="@string/login"
-        android:textColor="@color/white"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="401dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".activities.WelcomeActivity"/>

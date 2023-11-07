@@ -3,4 +3,6 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="register">Register</string>
     <string name="login">Log In</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login_screen_title">Log in to continue</string>
 </resources>
