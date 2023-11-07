@@ -1,5 +1,7 @@
 package social.spielapp.android.net;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -55,7 +57,7 @@ public class Network {
         webSocket = client.newWebSocket(request, new WebSocketListener() {
             @Override
             public void onClosed(@NonNull WebSocket webSocket, int code, @NonNull String reason) {
-                super.onClosed(webSocket, code, reason);
+                Network.webSocket = null;
             }
 
             @Override
@@ -70,12 +72,14 @@ public class Network {
 
             @Override
             public void onMessage(@NonNull WebSocket webSocket, @NonNull String text) {
-                super.onMessage(webSocket, text);
-            }
+                try {
+                    JSONObject data = new JSONObject(text);
+                    switch (data.getString("path")) {
 
-            @Override
-            public void onMessage(@NonNull WebSocket webSocket, @NonNull ByteString bytes) {
-                super.onMessage(webSocket, bytes);
+                    }
+                } catch (JSONException e) {
+                    Log.e(Network.class.getName(), "Invalid JSON data", e);
+                }
             }
 
             @Override
