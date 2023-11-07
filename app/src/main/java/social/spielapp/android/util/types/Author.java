@@ -2,6 +2,7 @@ package social.spielapp.android.util.types;
 
 import androidx.annotation.NonNull;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URI;
@@ -17,6 +18,14 @@ public class Author {
         this.username = username;
         this.displayName = displayName;
         this.picture = picture;
+    }
+
+    public static Author fromJsonObject(JSONObject author) throws JSONException {
+        return new Author(
+                author.getString("username"),
+                author.getString("displayName"),
+                URI.create(author.getString("picture"))
+        );
     }
 
     @NonNull

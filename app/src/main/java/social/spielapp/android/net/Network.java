@@ -31,7 +31,7 @@ public class Network {
         sendMessage(message, channel.id);
     }
 
-    public static void onMessageReceive(String message) {
+    public static void onMessageReceive(Message message) {
         throw new NotImplementedError();
     }
 
@@ -75,7 +75,8 @@ public class Network {
                 try {
                     JSONObject data = new JSONObject(text);
                     switch (data.getString("path")) {
-
+                        case "/v1/user/inbox":
+                            onMessageReceive(Message.fromJsonObject(data.getJSONObject("message")));
                     }
                 } catch (JSONException e) {
                     Log.e(Network.class.getName(), "Invalid JSON data", e);

@@ -2,6 +2,7 @@ package social.spielapp.android.util.types;
 
 import androidx.annotation.NonNull;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -20,6 +21,14 @@ public class Message {
         this.timestamp = timestamp;
         this.uuid = UUID.randomUUID();
         // TODO: add crc32
+    }
+
+    public static Message fromJsonObject(JSONObject message) throws JSONException {
+        return new Message(
+                message.getString("content"),
+                Author.fromJsonObject(message.getJSONObject("author")),
+                Integer.getInteger(message.getString("timestamp"))
+        );
     }
 
     @NonNull
