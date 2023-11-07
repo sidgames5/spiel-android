@@ -34,6 +34,47 @@
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/inputUsername"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:background="@drawable/background_input"
+            android:hint="@string/username"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="yes"
+            android:inputType="text"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            android:autofillHints="username" />
+
+        <EditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@drawable/background_input"
+            android:hint="@string/password"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="yes"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            android:autofillHints="password" />
+        
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"/>
+
     </LinearLayout>
 
 </ScrollView>

@@ -5,4 +5,6 @@
     <string name="login">Log In</string>
     <string name="welcome_back">Welcome Back!</string>
     <string name="login_screen_title">Log in to continue</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
