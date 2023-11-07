@@ -7,22 +7,23 @@ import android.os.Bundle;
 import android.view.View;
 
 import social.spielapp.android.R;
+import social.spielapp.android.databinding.ActivityLoginBinding;
+import social.spielapp.android.databinding.ActivityWelcomeBinding;
 
 public class WelcomeActivity extends AppCompatActivity {
+
+    private ActivityWelcomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setListeners();
     }
 
-    public void register(View view) {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
-    }
-
-    public void login(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+    private void setListeners() {
+        binding.welcomeLogin.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), LoginActivity.class)));
+        binding.welcomeRegister.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), RegisterActivity.class)));
     }
 }

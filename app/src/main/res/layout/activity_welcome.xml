@@ -34,9 +34,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
-            app:cornerRadius="@dimen/_8sdp"
-            android:onClick="register"
-            tools:ignore="UsingOnClickInXml" />
+            app:cornerRadius="@dimen/_8sdp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/welcomeLogin"
@@ -47,9 +45,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
-            app:cornerRadius="@dimen/_8sdp"
-            android:onClick="login"
-            tools:ignore="UsingOnClickInXml" />
+            app:cornerRadius="@dimen/_8sdp" />
 
     </LinearLayout>
     

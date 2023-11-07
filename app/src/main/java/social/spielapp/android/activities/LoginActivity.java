@@ -7,17 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 
 import social.spielapp.android.R;
+import social.spielapp.android.databinding.ActivityLoginBinding;
+import social.spielapp.android.databinding.ActivityRegisterBinding;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setListeners();
     }
 
-    public void gotoRegister(View view) {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
+    private void setListeners() {
+        binding.textNoAccount.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), RegisterActivity.class)));
     }
 }
