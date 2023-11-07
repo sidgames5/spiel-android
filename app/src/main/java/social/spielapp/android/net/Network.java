@@ -11,7 +11,11 @@ public class Network {
         JSONObject obj = new JSONObject();
         obj.put("path", "/v1/channel/write");
         obj.put("message", new JSONObject().put("content", message));
-        webSocket.send(obj.toString());
+        if (webSocket != null) {
+            webSocket.send(obj.toString());
+        } else {
+            throw new IllegalStateException("Websocket not yet initialized");
+        }
     }
 
     public static void onMessageReceive(String message) {
