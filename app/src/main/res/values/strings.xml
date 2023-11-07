@@ -8,4 +8,10 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="no_account">Don\'t have an account?</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="your_name">Your Name</string>
+    <string name="phone_number_opt">Phone Number (Optional)</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="create_new_account">Create New Account</string>
 </resources>
