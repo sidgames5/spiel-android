@@ -85,7 +85,9 @@
             android:text="@string/no_account"
             android:textColor="@color/secondary_text"
             android:textSize="@dimen/_14ssp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="gotoRegister"
+            tools:ignore="UsingOnClickInXml" />
 
     </LinearLayout>
 

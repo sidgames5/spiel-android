@@ -108,7 +108,9 @@
             android:text="@string/have_account"
             android:textColor="@color/secondary_text"
             android:textSize="@dimen/_14ssp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="gotoLogin"
+            tools:ignore="UsingOnClickInXml" />
 
     </LinearLayout>
 
