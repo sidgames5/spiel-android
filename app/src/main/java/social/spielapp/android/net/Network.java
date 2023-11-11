@@ -7,9 +7,9 @@ import androidx.annotation.Nullable;
 
 import kotlin.NotImplementedError;
 import okhttp3.*;
-import okio.ByteString;
 import social.spielapp.android.util.types.Channel;
 import social.spielapp.android.util.types.Message;
+import social.spielapp.android.util.types.Packet;
 
 import org.json.*;
 
@@ -47,6 +47,10 @@ public class Network {
         throw new NotImplementedError();
     }
 
+    public static void onReply(Packet packet) {
+
+    }
+
     public static void createWebsocket() {
         OkHttpClient client = new OkHttpClient();
 
@@ -77,6 +81,10 @@ public class Network {
                     switch (data.getString("path")) {
                         case "/v1/user/inbox":
                             onMessageReceive(Message.fromJsonObject(data.getJSONObject("message")));
+                            break;
+                        case "/v1/reply":
+                            onReply(Packet.fromJsonObject(data));
+                            break;
                     }
                 } catch (JSONException e) {
                     Log.e(Network.class.getName(), "Invalid JSON data", e);

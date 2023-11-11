@@ -7,17 +7,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import social.spielapp.android.databinding.ActivityRegisterBinding;
 import social.spielapp.android.util.AuthManager;
+import social.spielapp.android.util.SettingsManager;
 import social.spielapp.android.util.ToastUtil;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegisterBinding binding;
+    private SettingsManager settingsManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        settingsManager = new SettingsManager(getApplicationContext());
         setListeners();
     }
 

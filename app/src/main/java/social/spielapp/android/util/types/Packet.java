@@ -7,20 +7,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class Request {
+public class Packet {
     public final int status;
     public final Object data;
     public final String path;
     public final UUID id;
 
-    public Request(int status, Object data, String path, UUID id) {
+    public Packet(int status, Object data, String path, UUID id) {
         this.status = status;
         this.data = data;
         this.path = path;
         this.id = id;
     }
 
-    public Request(Object data, String path, UUID id) {
+    public Packet(Object data, String path, UUID id) {
         this.data = data;
         this.path = path;
         this.id = id;
@@ -40,7 +40,7 @@ public class Request {
         return new JSONObject(this.toMap());
     }
 
-    public static Request fromJsonObject(JSONObject json) throws JSONException {
-        return new Request(json.getInt("status"), json.get("data"), json.getString("path"), UUID.fromString(json.getString("id")));
+    public static Packet fromJsonObject(JSONObject json) throws JSONException {
+        return new Packet(json.getInt("status"), json.get("data"), json.getString("path"), UUID.fromString(json.getString("id")));
     }
 }

@@ -1,6 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Theme.Spiel" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="android:statusBarColor">@color/primary</item>
     </style>
+
+    <style name="Theme.Spiel.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Spiel.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Spiel.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
