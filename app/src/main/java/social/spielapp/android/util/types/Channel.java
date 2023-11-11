@@ -29,11 +29,11 @@ public class Channel {
                 '}';
     }
 
-    public Map<String, String> toMap() {
-        Map<String, String> map = new HashMap<>();
-        map.put("id", String.valueOf(id));
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", id);
         map.put("name", name);
-        map.put("authors", authors.toString());
+        map.put("authors", authors);
         return map;
     }
 

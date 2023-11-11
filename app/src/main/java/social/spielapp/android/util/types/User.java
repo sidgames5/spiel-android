@@ -27,8 +27,8 @@ public class User extends Author {
                 '}';
     }
 
-    public Map<String, String> toMap() {
-        Map<String, String> map = super.toMap();
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = super.toMap();
         map.put("passwordHash", passwordHash);
         return map;
     }

@@ -38,11 +38,11 @@ public class Author {
                 '}';
     }
 
-    public Map<String, String> toMap() {
-        Map<String, String> map = new HashMap<>();
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
         map.put("username", username);
         map.put("displayName", displayName);
-        map.put("picture", picture.toString());
+        map.put("picture", picture);
         return map;
     }
 

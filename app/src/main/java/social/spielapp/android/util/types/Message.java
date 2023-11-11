@@ -27,7 +27,7 @@ public class Message {
         return new Message(
                 message.getString("content"),
                 Author.fromJsonObject(message.getJSONObject("author")),
-                Integer.getInteger(message.getString("timestamp"))
+                message.getInt("timestamp")
         );
     }
 
@@ -42,11 +42,11 @@ public class Message {
                 '}';
     }
 
-    public Map<String, String> toMap() {
-        Map<String, String> map = new HashMap<>();
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
         map.put("content", content);
-        map.put("author", author.toMap().toString());
-        map.put("timestamp", String.valueOf(timestamp));
+        map.put("author", author);
+        map.put("timestamp", timestamp);
         map.put("uuid", uuid.toString());
         return map;
     }

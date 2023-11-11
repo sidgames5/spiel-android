@@ -14,8 +14,8 @@ public class Settings {
         return new Settings();
     }
 
-    public Map<String, String> toMap() {
-        Map<String, String> map = new HashMap<>();
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
         return map;
     }
 
