@@ -5,7 +5,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import social.spielapp.android.activities.WelcomeActivity;
+import social.spielapp.android.activities.MainActivity;
 import social.spielapp.android.util.types.User;
 
 public class AuthManager {
@@ -25,7 +25,7 @@ public class AuthManager {
     public static void logout(AppCompatActivity from) {
         if (currentUser != null) {
             currentUser = null;
-            from.startActivity(new Intent(from.getApplicationContext(), WelcomeActivity.class));
+            from.startActivity(new Intent(from.getApplicationContext(), MainActivity.class));
         } else {
             Log.w(AuthManager.class.getName(), "Not logged in");
         }

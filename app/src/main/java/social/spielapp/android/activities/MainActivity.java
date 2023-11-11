@@ -5,16 +5,16 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import social.spielapp.android.databinding.ActivityWelcomeBinding;
+import social.spielapp.android.databinding.ActivityMainBinding;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
-    private ActivityWelcomeBinding binding;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setListeners();
     }
