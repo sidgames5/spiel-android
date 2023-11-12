@@ -4,12 +4,13 @@ import androidx.annotation.NonNull;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Channel {
+public class Channel implements Serializable {
     public final int id;
     public final String name;
     public final List<Author> authors;

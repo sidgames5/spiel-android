@@ -2,6 +2,7 @@ package social.spielapp.android.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import social.spielapp.android.R;
@@ -18,5 +19,7 @@ public class ChatActivity extends AppCompatActivity {
         setListeners();
     }
 
-    private void setListeners() {}
+    private void setListeners() {
+        binding.imageBack.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), ConvosActivity.class)));
+    }
 }

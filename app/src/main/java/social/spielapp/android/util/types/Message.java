@@ -5,11 +5,12 @@ import androidx.annotation.NonNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class Message {
+public class Message implements Serializable {
     public final String content;
     public final Author author;
     public final int timestamp;

@@ -7,7 +7,7 @@
     <color name="input_background">#ECECEC</color>
     <color name="icon_background">#20FFFFFF</color>
     <color name="error">#FF5100</color>
-    <color name="received_message_background">#1F0F2B</color>
+    <color name="received_message_background">#AAAAAA</color>
 
     <color name="white">#FFFFFF</color>
 </resources>

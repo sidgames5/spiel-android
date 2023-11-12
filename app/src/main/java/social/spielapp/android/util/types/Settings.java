@@ -5,11 +5,12 @@ import androidx.annotation.NonNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Settings {
+public class Settings implements Serializable {
     public static Settings fromJsonObject(JSONObject author) throws JSONException {
         return new Settings();
     }

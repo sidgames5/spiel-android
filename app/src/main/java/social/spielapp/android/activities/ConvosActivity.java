@@ -11,10 +11,11 @@ import java.util.List;
 
 import social.spielapp.android.adapters.ChannelsAdapter;
 import social.spielapp.android.databinding.ActivityConvosBinding;
+import social.spielapp.android.listeners.ChannelListener;
 import social.spielapp.android.util.SettingsManager;
 import social.spielapp.android.util.types.Channel;
 
-public class ConvosActivity extends AppCompatActivity {
+public class ConvosActivity extends AppCompatActivity implements ChannelListener {
     private ActivityConvosBinding binding;
     private SettingsManager settingsManager;
 
@@ -35,7 +36,7 @@ public class ConvosActivity extends AppCompatActivity {
         Channel tchannel = new Channel(1, "Test", new ArrayList<>());
         channels.add(tchannel);
         if (channels.size() > 0) {
-            ChannelsAdapter channelsAdapter = new ChannelsAdapter(channels);
+            ChannelsAdapter channelsAdapter = new ChannelsAdapter(channels, this);
             binding.channelsRecyclerView.setAdapter(channelsAdapter);
             binding.channelsRecyclerView.setVisibility(View.VISIBLE);
         } else {
@@ -60,5 +61,13 @@ public class ConvosActivity extends AppCompatActivity {
         } else {
             binding.progressBar.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @Override
+    public void onChannelClicked(Channel channel) {
+        Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+        intent.putExtra("channel", channel);
+        startActivity(intent);
+        finish();
     }
 }

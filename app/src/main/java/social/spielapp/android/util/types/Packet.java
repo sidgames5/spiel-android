@@ -3,11 +3,12 @@ package social.spielapp.android.util.types;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class Packet {
+public class Packet implements Serializable {
     public final int status;
     public final Object data;
     public final String path;

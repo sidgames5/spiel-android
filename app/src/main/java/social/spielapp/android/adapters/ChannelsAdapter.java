@@ -13,14 +13,17 @@ import java.util.Base64;
 import java.util.List;
 
 import social.spielapp.android.databinding.ItemContainerChannelBinding;
-import social.spielapp.android.databinding.ItemContainerUserBinding;
+import social.spielapp.android.listeners.ChannelListener;
 import social.spielapp.android.util.types.Channel;
 
 public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.ChannelViewHolder> {
     private final List<Channel> channels;
 
-    public ChannelsAdapter(List<Channel> channels) {
+    private final ChannelListener channelListener;
+
+    public ChannelsAdapter(List<Channel> channels, ChannelListener channelListener) {
         this.channels = channels;
+        this.channelListener = channelListener;
     }
 
     @NonNull
@@ -32,7 +35,7 @@ public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.Channe
 
     @Override
     public void onBindViewHolder(@NonNull ChannelViewHolder holder, int position) {
-        holder.setUserData(channels.get(position));
+        holder.setChannelData(channels.get(position));
     }
 
     @Override
@@ -48,9 +51,10 @@ public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.Channe
             binding = itemContainerChannelBinding;
         }
 
-        void setUserData(Channel channel) {
+        void setChannelData(Channel channel) {
             binding.textName.setText(channel.name);
             binding.imagePicture.setImageBitmap(getUserImage(channel.picture));
+            binding.getRoot().setOnClickListener(v -> channelListener.onChannelClicked(channel));
         }
     }
     private Bitmap getUserImage(URI picture) {

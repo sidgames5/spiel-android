@@ -4,11 +4,12 @@ import androidx.annotation.NonNull;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
-public class User extends Author {
+public class User extends Author implements Serializable {
     public final String passwordHash;
 
     public User(String username, String displayName, URI picture, String passwordHash) {
