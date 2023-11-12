@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.nio.charset.Charset;
 import java.util.Base64;
 import java.util.List;
 
@@ -57,7 +58,12 @@ public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.Channe
         }
     }
     private Bitmap getImage(String picture) {
-        byte[] bytes = Base64.getDecoder().decode(picture);
+        byte[] bytes;
+        if (picture != null) {
+            bytes = picture.getBytes(Charset.defaultCharset());
+        } else {
+            bytes = "".getBytes(Charset.defaultCharset());
+        }
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 }
