@@ -32,6 +32,8 @@ public class ConvosActivity extends AppCompatActivity {
         loading(true);
         // handle shit
         List<Channel> channels = new ArrayList<>();
+        Channel tchannel = new Channel(1, "Test", new ArrayList<>());
+        channels.add(tchannel);
         if (channels.size() > 0) {
             ChannelsAdapter channelsAdapter = new ChannelsAdapter(channels);
             binding.channelsRecyclerView.setAdapter(channelsAdapter);
