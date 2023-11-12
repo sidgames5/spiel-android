@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Spiel"
         tools:targetApi="31">
         <activity
+            android:name=".activities.ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ConvosActivity"
             android:exported="false" />
         <activity

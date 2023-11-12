@@ -12,6 +12,7 @@ import java.net.URI;
 import java.util.Base64;
 import java.util.List;
 
+import social.spielapp.android.databinding.ItemContainerChannelBinding;
 import social.spielapp.android.databinding.ItemContainerUserBinding;
 import social.spielapp.android.util.types.Channel;
 
@@ -25,8 +26,8 @@ public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.Channe
     @NonNull
     @Override
     public ChannelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemContainerUserBinding itemContainerUserBinding = ItemContainerUserBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new ChannelViewHolder(itemContainerUserBinding);
+        ItemContainerChannelBinding itemContainerChannelBinding = ItemContainerChannelBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ChannelViewHolder(itemContainerChannelBinding);
     }
 
     @Override
@@ -40,11 +41,11 @@ public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.Channe
     }
 
     class ChannelViewHolder extends RecyclerView.ViewHolder {
-        ItemContainerUserBinding binding;
+        ItemContainerChannelBinding binding;
 
-        ChannelViewHolder(ItemContainerUserBinding itemContainerUserBinding) {
-            super(itemContainerUserBinding.getRoot());
-            binding = itemContainerUserBinding;
+        ChannelViewHolder(ItemContainerChannelBinding itemContainerChannelBinding) {
+            super(itemContainerChannelBinding.getRoot());
+            binding = itemContainerChannelBinding;
         }
 
         void setUserData(Channel channel) {
