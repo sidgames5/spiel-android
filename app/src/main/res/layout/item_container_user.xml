@@ -6,7 +6,7 @@
     android:padding="@dimen/_8sdp">
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/imageProfile"
+        android:id="@+id/imagePicture"
         android:layout_width="@dimen/_35sdp"
         android:layout_height="@dimen/_35sdp"
         android:background="@drawable/background_image"
@@ -19,9 +19,9 @@
         android:id="@+id/viewSupporter"
         android:layout_width="1dp"
         android:layout_height="1dp"
-        app:layout_constraintBottom_toBottomOf="@id/imageProfile"
-        app:layout_constraintStart_toEndOf="@id/imageProfile"
-        app:layout_constraintTop_toTopOf="@id/imageProfile"/>
+        app:layout_constraintBottom_toBottomOf="@id/imagePicture"
+        app:layout_constraintStart_toEndOf="@id/imagePicture"
+        app:layout_constraintTop_toTopOf="@id/imagePicture"/>
 
     <TextView
         android:id="@+id/textName"
@@ -33,22 +33,9 @@
         android:maxLines="1"
         android:textColor="@color/primary_text"
         android:textSize="@dimen/_14ssp"
-        app:layout_constraintBottom_toTopOf="@id/viewSupporter"
+        app:layout_constraintBottom_toBottomOf="@id/viewSupporter"
+        app:layout_constraintTop_toTopOf="@id/viewSupporter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageProfile"/>
-
-    <TextView
-        android:id="@+id/textUsername"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/_10ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageProfile"
-        app:layout_constraintTop_toBottomOf="@id/viewSupporter"/>
+        app:layout_constraintStart_toEndOf="@id/imagePicture"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

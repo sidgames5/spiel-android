@@ -8,11 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import social.spielapp.android.util.types.Channel;
 import social.spielapp.android.util.types.Settings;
 import social.spielapp.android.util.types.User;
 
 public class LocalDb {
     public User user;
+    public List<Channel> channels;
     public List<UUID> readMessages;
     public Settings settings;
 

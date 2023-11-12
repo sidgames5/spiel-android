@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import org.json.JSONObject;
 
+import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ public class Channel {
     public final int id;
     public final String name;
     public final List<Author> authors;
+    public URI picture;
 
     public Channel(int id, String name, List<Author> authors) {
         this.id = id;

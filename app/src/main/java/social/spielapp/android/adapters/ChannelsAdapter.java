@@ -13,44 +13,43 @@ import java.util.Base64;
 import java.util.List;
 
 import social.spielapp.android.databinding.ItemContainerUserBinding;
-import social.spielapp.android.util.types.User;
+import social.spielapp.android.util.types.Channel;
 
-public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHolder> {
-    private final List<User> users;
+public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.ChannelViewHolder> {
+    private final List<Channel> channels;
 
-    public UsersAdapter(List<User> users) {
-        this.users = users;
+    public ChannelsAdapter(List<Channel> channels) {
+        this.channels = channels;
     }
 
     @NonNull
     @Override
-    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ChannelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemContainerUserBinding itemContainerUserBinding = ItemContainerUserBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new UserViewHolder(itemContainerUserBinding);
+        return new ChannelViewHolder(itemContainerUserBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        holder.setUserData(users.get(position));
+    public void onBindViewHolder(@NonNull ChannelViewHolder holder, int position) {
+        holder.setUserData(channels.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return users.size();
+        return channels.size();
     }
 
-    class UserViewHolder extends RecyclerView.ViewHolder {
+    class ChannelViewHolder extends RecyclerView.ViewHolder {
         ItemContainerUserBinding binding;
 
-        UserViewHolder(ItemContainerUserBinding itemContainerUserBinding) {
+        ChannelViewHolder(ItemContainerUserBinding itemContainerUserBinding) {
             super(itemContainerUserBinding.getRoot());
             binding = itemContainerUserBinding;
         }
 
-        void setUserData(User user) {
-            binding.textName.setText(user.displayName);
-            binding.textUsername.setText(user.username);
-            binding.imageProfile.setImageBitmap(getUserImage(user.picture));
+        void setUserData(Channel channel) {
+            binding.textName.setText(channel.name);
+            binding.imagePicture.setImageBitmap(getUserImage(channel.picture));
         }
     }
     private Bitmap getUserImage(URI picture) {

@@ -49,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void handleRegister() {
+        startActivity(new Intent(getApplicationContext(), ConvosActivity.class));
         if (!checkValidity()) return;
         final String uname = binding.inputUsername.getText().toString();
         final String passwd = binding.inputPassword.getText().toString();
