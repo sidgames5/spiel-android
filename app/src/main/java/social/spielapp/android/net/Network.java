@@ -7,9 +7,9 @@ import androidx.annotation.Nullable;
 
 import kotlin.NotImplementedError;
 import okhttp3.*;
-import social.spielapp.android.util.types.Channel;
-import social.spielapp.android.util.types.Message;
-import social.spielapp.android.util.types.Packet;
+import social.spielapp.android.models.Channel;
+import social.spielapp.android.models.Message;
+import social.spielapp.android.models.Packet;
 
 import org.json.*;
 

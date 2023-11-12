@@ -1,4 +1,4 @@
-package social.spielapp.android.util.types;
+package social.spielapp.android.models;
 
 import androidx.annotation.NonNull;
 
@@ -14,7 +14,7 @@ public class Channel implements Serializable {
     public final int id;
     public final String name;
     public final List<Author> authors;
-    public URI picture;
+    public String pictureBytes;
 
     public Channel(int id, String name, List<Author> authors) {
         this.id = id;

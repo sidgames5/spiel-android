@@ -8,13 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.net.URI;
 import java.util.Base64;
 import java.util.List;
 
 import social.spielapp.android.databinding.ItemContainerChannelBinding;
 import social.spielapp.android.listeners.ChannelListener;
-import social.spielapp.android.util.types.Channel;
+import social.spielapp.android.models.Channel;
 
 public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.ChannelViewHolder> {
     private final List<Channel> channels;
@@ -53,14 +52,12 @@ public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.Channe
 
         void setChannelData(Channel channel) {
             binding.textName.setText(channel.name);
-            binding.imagePicture.setImageBitmap(getUserImage(channel.picture));
+            binding.imagePicture.setImageBitmap(getImage(channel.pictureBytes));
             binding.getRoot().setOnClickListener(v -> channelListener.onChannelClicked(channel));
         }
     }
-    private Bitmap getUserImage(URI picture) {
-        // TODO: download picture and handle shit
-        String encodedImage = "";
-        byte[] bytes = Base64.getDecoder().decode(encodedImage);
+    private Bitmap getImage(String picture) {
+        byte[] bytes = Base64.getDecoder().decode(picture);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 }

@@ -13,7 +13,7 @@ import social.spielapp.android.adapters.ChannelsAdapter;
 import social.spielapp.android.databinding.ActivityConvosBinding;
 import social.spielapp.android.listeners.ChannelListener;
 import social.spielapp.android.util.SettingsManager;
-import social.spielapp.android.util.types.Channel;
+import social.spielapp.android.models.Channel;
 
 public class ConvosActivity extends AppCompatActivity implements ChannelListener {
     private ActivityConvosBinding binding;

@@ -1,4 +1,4 @@
-package social.spielapp.android.util.types;
+package social.spielapp.android.models;
 
 import androidx.annotation.NonNull;
 

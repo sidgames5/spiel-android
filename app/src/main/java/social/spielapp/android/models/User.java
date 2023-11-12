@@ -1,4 +1,4 @@
-package social.spielapp.android.util.types;
+package social.spielapp.android.models;
 
 import androidx.annotation.NonNull;
 
@@ -6,14 +6,13 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.net.URI;
-import java.util.HashMap;
 import java.util.Map;
 
 public class User extends Author implements Serializable {
     public final String passwordHash;
 
-    public User(String username, String displayName, URI picture, String passwordHash) {
-        super(username, displayName, picture);
+    public User(String username, String displayName, String picture, String passwordHash, int id) {
+        super(username, displayName, picture, id);
         this.passwordHash = passwordHash;
     }
 
@@ -24,7 +23,7 @@ public class User extends Author implements Serializable {
                 "passwordHash='" + passwordHash + '\'' +
                 ", username='" + username + '\'' +
                 ", displayName='" + displayName + '\'' +
-                ", picture=" + picture +
+                ", picture=" + pictureBytes +
                 '}';
     }
 

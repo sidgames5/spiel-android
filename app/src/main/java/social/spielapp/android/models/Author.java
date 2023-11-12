@@ -1,4 +1,4 @@
-package social.spielapp.android.util.types;
+package social.spielapp.android.models;
 
 import androidx.annotation.NonNull;
 
@@ -13,19 +13,22 @@ import java.util.Map;
 public class Author implements Serializable {
     public final String username;
     public final String displayName;
-    public final URI picture;
+    public final String pictureBytes;
+    public final int id;
 
-    public Author(String username, String displayName, URI picture) {
+    public Author(String username, String displayName, String pictureBytes, int id) {
         this.username = username;
         this.displayName = displayName;
-        this.picture = picture;
+        this.pictureBytes = pictureBytes;
+        this.id = id;
     }
 
     public static Author fromJsonObject(JSONObject author) throws JSONException {
         return new Author(
                 author.getString("username"),
                 author.getString("displayName"),
-                URI.create(author.getString("picture"))
+                author.getString("picture"),
+                author.getInt("id")
         );
     }
 
@@ -35,7 +38,7 @@ public class Author implements Serializable {
         return "{" +
                 "username='" + username + '\'' +
                 ", displayName='" + displayName + '\'' +
-                ", picture=" + picture +
+                ", pictureBytes=" + pictureBytes +
                 '}';
     }
 
@@ -43,7 +46,8 @@ public class Author implements Serializable {
         Map<String, Object> map = new HashMap<>();
         map.put("username", username);
         map.put("displayName", displayName);
-        map.put("picture", picture);
+        map.put("pictureBytes", pictureBytes);
+        map.put("id", id);
         return map;
     }
 

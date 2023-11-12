@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import social.spielapp.android.activities.MainActivity;
-import social.spielapp.android.util.types.User;
+import social.spielapp.android.models.User;
 
 public class AuthManager {
     private static User currentUser = null;

@@ -1,4 +1,4 @@
-package social.spielapp.android.util.types.db;
+package social.spielapp.android.models.db;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import social.spielapp.android.util.types.Channel;
-import social.spielapp.android.util.types.Settings;
-import social.spielapp.android.util.types.User;
+import social.spielapp.android.models.Channel;
+import social.spielapp.android.models.Settings;
+import social.spielapp.android.models.User;
 
 public class LocalDb {
     public User user;

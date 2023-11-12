@@ -3,8 +3,6 @@ package social.spielapp.android.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import social.spielapp.android.util.types.Settings;
-
 public class SettingsManager {
     private SharedPreferences sharedPreferences;
 

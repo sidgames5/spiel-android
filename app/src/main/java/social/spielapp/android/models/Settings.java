@@ -1,12 +1,9 @@
-package social.spielapp.android.util.types;
-
-import androidx.annotation.NonNull;
+package social.spielapp.android.models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package social.spielapp.android.util.types;
+package social.spielapp.android.models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
