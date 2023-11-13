@@ -11,10 +11,11 @@ import java.util.Map;
 import java.util.UUID;
 
 public class Message implements Serializable {
-    public final String content;
-    public final Author author;
-    public final int timestamp;
-    public final UUID uuid;
+    public String content;
+    public Author author;
+    public long timestamp;
+    public UUID uuid;
+    public int id;
 
     public Message(String content, Author author, int timestamp) {
         this.content = content;
@@ -23,6 +24,8 @@ public class Message implements Serializable {
         this.uuid = UUID.randomUUID();
         // TODO: add crc32
     }
+
+    public Message() {}
 
     public static Message fromJsonObject(JSONObject message) throws JSONException {
         return new Message(

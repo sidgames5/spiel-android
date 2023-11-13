@@ -9,10 +9,10 @@ import java.util.Map;
 import java.util.UUID;
 
 public class Packet implements Serializable {
-    public final int status;
-    public final Object data;
-    public final String path;
-    public final UUID id;
+    public int status;
+    public Object data;
+    public String path;
+    public UUID id;
 
     public Packet(int status, Object data, String path, UUID id) {
         this.status = status;
@@ -27,6 +27,8 @@ public class Packet implements Serializable {
         this.id = id;
         this.status = 0;
     }
+
+    public Packet() {}
 
     public Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();

@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Author implements Serializable {
-    public final String username;
-    public final String displayName;
-    public final String pictureBytes;
-    public final int id;
+    public String username;
+    public String displayName;
+    public String pictureBytes;
+    public int id;
 
     public Author(String username, String displayName, String pictureBytes, int id) {
         this.username = username;
@@ -22,6 +22,8 @@ public class Author implements Serializable {
         this.pictureBytes = pictureBytes;
         this.id = id;
     }
+
+    public Author() {}
 
     public static Author fromJsonObject(JSONObject author) throws JSONException {
         return new Author(

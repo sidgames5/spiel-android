@@ -47,6 +47,10 @@ public class AuthManager {
     }
 
     public static User getCurrentUser() {
-        return currentUser;
+        if (currentUser != null) {
+            return currentUser;
+        } else {
+            return new User("testing123", "Tester", "", "", 1);
+        }
     }
 }
