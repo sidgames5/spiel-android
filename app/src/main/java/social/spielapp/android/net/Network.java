@@ -8,7 +8,9 @@ import androidx.annotation.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
 
@@ -18,15 +20,16 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
-import social.spielapp.android.activities.ChatActivity;
 import social.spielapp.android.models.Author;
 import social.spielapp.android.models.Channel;
 import social.spielapp.android.models.Message;
 import social.spielapp.android.models.Packet;
+import social.spielapp.android.util.MessageManager;
 
 public class Network {
     private static WebSocket webSocket;
     private static Consumer<Message> messageReceiver;
+    private static List<Packet> packetHistory;
 
     public static void setMessageReceiver(Consumer<Message> messageReceiver) {
         Network.messageReceiver = messageReceiver;
@@ -80,7 +83,7 @@ public class Network {
     }
 
     public static void onMessageReceive(Message message) {
-        messageReceiver.accept(message);
+        MessageManager.addMessage(message);
     }
 
     public static void authenticate(String username, String password) {

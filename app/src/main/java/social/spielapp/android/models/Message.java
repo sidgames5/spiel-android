@@ -16,12 +16,14 @@ public class Message implements Serializable {
     public long timestamp;
     public UUID uuid;
     public int id;
+    public int channel;
 
-    public Message(String content, Author author, int timestamp) {
+    public Message(String content, Author author, int timestamp, int channel) {
         this.content = content;
         this.author = author;
         this.timestamp = timestamp;
         this.uuid = UUID.randomUUID();
+        this.channel = channel;
         // TODO: add crc32
     }
 
@@ -31,7 +33,8 @@ public class Message implements Serializable {
         return new Message(
                 message.getString("content"),
                 Author.fromJsonObject(message.getJSONObject("author")),
-                message.getInt("timestamp")
+                message.getInt("timestamp"),
+                message.getInt("channel")
         );
     }
 

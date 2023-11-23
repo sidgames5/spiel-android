@@ -20,6 +20,7 @@ import social.spielapp.android.models.Channel;
 import social.spielapp.android.models.Message;
 import social.spielapp.android.net.Network;
 import social.spielapp.android.util.AuthManager;
+import social.spielapp.android.util.MessageManager;
 import social.spielapp.android.util.SettingsManager;
 
 public class ChatActivity extends AppCompatActivity {
@@ -44,7 +45,7 @@ public class ChatActivity extends AppCompatActivity {
         messages = new ArrayList<>();
         chatAdapter = new ChatAdapter(messages);
         binding.chatRecyclerView.setAdapter(chatAdapter);
-        Network.setMessageReceiver(this::writeMessage);
+        MessageManager.setActiveChannel(receiverChannel, this::writeMessage);
         try {
             Network.getMessageHistory(receiverChannel.id);
         } catch (JSONException e) {
