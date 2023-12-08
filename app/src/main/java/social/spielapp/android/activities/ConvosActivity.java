@@ -12,6 +12,7 @@ import java.util.List;
 import social.spielapp.android.adapters.ChannelsAdapter;
 import social.spielapp.android.databinding.ActivityConvosBinding;
 import social.spielapp.android.listeners.ChannelListener;
+import social.spielapp.android.util.AuthManager;
 import social.spielapp.android.util.SettingsManager;
 import social.spielapp.android.models.Channel;
 
@@ -27,6 +28,8 @@ public class ConvosActivity extends AppCompatActivity implements ChannelListener
         settingsManager = new SettingsManager(getApplicationContext());
         setListeners();
         getConvos();
+
+        AuthManager.login("username", "password");
     }
 
     private void getConvos() {

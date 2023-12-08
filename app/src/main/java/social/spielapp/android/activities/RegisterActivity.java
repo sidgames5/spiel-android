@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import social.spielapp.android.databinding.ActivityRegisterBinding;
-import social.spielapp.android.util.AuthManager;
 import social.spielapp.android.util.SettingsManager;
 import social.spielapp.android.util.ToastUtil;
 

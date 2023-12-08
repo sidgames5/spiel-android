@@ -61,6 +61,10 @@ public class Network {
         sendMessage(message, channel.id);
     }
 
+    public static void sendRaw(Packet packet) {
+        webSocket.send(new JSONObject(packet.toMap()).toString());
+    }
+
     public static void getMessageHistory(int channel, int start) throws JSONException {
         Packet packet = new Packet();
         packet.id = UUID.randomUUID();
