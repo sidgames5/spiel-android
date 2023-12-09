@@ -62,7 +62,11 @@ public class Network {
     }
 
     public static void sendRaw(Packet packet) {
-        webSocket.send(new JSONObject(packet.toMap()).toString());
+        if (webSocket != null) {
+            webSocket.send(new JSONObject(packet.toMap()).toString());
+        } else {
+            Log.w(Network.class.getName(), "Websocket not initialized");
+        }
     }
 
     public static void getMessageHistory(int channel, int start) throws JSONException {

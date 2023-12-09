@@ -19,6 +19,7 @@ import social.spielapp.android.models.Author;
 import social.spielapp.android.models.Channel;
 import social.spielapp.android.models.Message;
 import social.spielapp.android.net.Network;
+import social.spielapp.android.util.AuthManager;
 import social.spielapp.android.util.MessageManager;
 import social.spielapp.android.util.SettingsManager;
 

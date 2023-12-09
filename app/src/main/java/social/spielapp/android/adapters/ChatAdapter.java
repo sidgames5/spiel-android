@@ -11,6 +11,7 @@ import java.util.List;
 import social.spielapp.android.databinding.ItemContainerReceivedMessageBinding;
 import social.spielapp.android.databinding.ItemContainerSentMessageBinding;
 import social.spielapp.android.models.Message;
+import social.spielapp.android.util.AuthManager;
 import social.spielapp.android.util.DateUtil;
 import social.spielapp.android.util.PictureUtil;
 

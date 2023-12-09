@@ -15,6 +15,8 @@ import java.util.List;
 import social.spielapp.android.databinding.ItemContainerChannelBinding;
 import social.spielapp.android.listeners.ChannelListener;
 import social.spielapp.android.models.Channel;
+import social.spielapp.android.models.Message;
+import social.spielapp.android.net.MessageHistory;
 
 public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.ChannelViewHolder> {
     private final List<Channel> channels;
@@ -53,6 +55,7 @@ public class ChannelsAdapter extends RecyclerView.Adapter<ChannelsAdapter.Channe
 
         void setChannelData(Channel channel) {
             binding.textName.setText(channel.name);
+            binding.textLatestMessage.setText(MessageHistory.getLatestMessage(channel.id).content);
             binding.imagePicture.setImageBitmap(getImage(channel.pictureBytes));
             binding.getRoot().setOnClickListener(v -> channelListener.onChannelClicked(channel));
         }
