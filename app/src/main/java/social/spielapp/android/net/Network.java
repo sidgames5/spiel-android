@@ -5,21 +5,24 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.gson.Gson;
+
+import org.java_websocket.client.WebSocketClient;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
 
 import kotlin.NotImplementedError;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.WebSocket;
-import okhttp3.WebSocketListener;
 import social.spielapp.android.models.Author;
 import social.spielapp.android.models.Channel;
 import social.spielapp.android.models.Message;
@@ -27,9 +30,9 @@ import social.spielapp.android.models.Packet;
 import social.spielapp.android.util.MessageManager;
 
 public class Network {
-    private static WebSocket webSocket;
+    static WebSocketClient webSocket;
     private static Consumer<Message> messageReceiver;
-    private static List<Packet> packetHistory;
+    private static final Map<UUID, Packet> receivedPackets = new HashMap<>();
 
     public static void setMessageReceiver(Consumer<Message> messageReceiver) {
         Network.messageReceiver = messageReceiver;
@@ -63,7 +66,10 @@ public class Network {
 
     public static void sendRaw(Packet packet) {
         if (webSocket != null) {
-            webSocket.send(new JSONObject(packet.toMap()).toString());
+            Gson gson = new Gson();
+            String json = gson.toJson(packet);
+            Log.d(Network.class.getName(), json);
+            webSocket.send(json);
         } else {
             Log.w(Network.class.getName(), "Websocket not initialized");
         }
@@ -90,74 +96,37 @@ public class Network {
         getMessageHistory(channel, 0);
     }
 
-    public static void onMessageReceive(Message message) {
-        MessageManager.addMessage(message);
-    }
-
-    public static void authenticate(String username, String password) {
-        throw new NotImplementedError();
-    }
-
-    public static void onAuthSuccess(String token) {
-        throw new NotImplementedError();
-    }
-
-    public static void onAuthError(String error) {
-        throw new NotImplementedError();
-    }
-
-    public static void onReply(Packet packet) {
-
-    }
-
     public static void createWebsocket() {
-        OkHttpClient client = new OkHttpClient();
 
-        Request request = new Request.Builder()
-                .url("ws://localhost:8001")
-                .build();
+        Log.i(Network.class.getName(), "Opening websocket connection");
 
-        webSocket = client.newWebSocket(request, new WebSocketListener() {
-            @Override
-            public void onClosed(@NonNull WebSocket webSocket, int code, @NonNull String reason) {
-                Network.webSocket = null;
-            }
+        URI serverUri;
 
-            @Override
-            public void onClosing(@NonNull WebSocket webSocket, int code, @NonNull String reason) {
-                super.onClosing(webSocket, code, reason);
-            }
+        try {
+            serverUri = new URI("ws://10.0.1.152:8174");
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
 
-            @Override
-            public void onFailure(@NonNull WebSocket webSocket, @NonNull Throwable t, @Nullable Response response) {
-                super.onFailure(webSocket, t, response);
-            }
-
-            @Override
-            public void onMessage(@NonNull WebSocket webSocket, @NonNull String text) {
-                try {
-                    JSONObject data = new JSONObject(text);
-                    switch (data.getString("path")) {
-                        case "/v1/user/inbox":
-                            onMessageReceive(Message.fromJsonObject(data.getJSONObject("message")));
-                            break;
-                        case "/v1/reply":
-                            onReply(Packet.fromJsonObject(data));
-                            break;
-                    }
-                } catch (JSONException e) {
-                    Log.e(Network.class.getName(), "Invalid JSON data", e);
-                }
-            }
-
-            @Override
-            public void onOpen(@NonNull WebSocket webSocket, @NonNull Response response) {
-                super.onOpen(webSocket, response);
-            }
-        });
+        webSocket = new SpielWebSocketClient(serverUri);
+        webSocket.connect();
     }
 
-    public static WebSocket getWebSocket() {
+    public static WebSocketClient getWebSocket() {
         return webSocket;
+    }
+
+    public static Packet receive(UUID id) {
+        try {
+            synchronized (receivedPackets) {
+                while (!receivedPackets.containsKey(id)) {
+                    receivedPackets.wait(500);
+                    Log.i(Network.class.getName(), "Waiting for receive packet");
+                }
+                return receivedPackets.get(id);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

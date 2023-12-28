@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import social.spielapp.android.databinding.ActivityMainBinding;
+import social.spielapp.android.net.Network;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setListeners();
+
+        Network.createWebsocket();
     }
 
     private void setListeners() {
