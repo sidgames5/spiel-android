@@ -13,8 +13,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +33,7 @@ import social.spielapp.android.util.MessageManager;
 
 public class Network {
     static WebSocketClient webSocket;
+    static SpielHttpClient httpClient;
     private static Consumer<Message> messageReceiver;
     private static final Map<UUID, Packet> receivedPackets = new HashMap<>();
 
@@ -96,24 +99,22 @@ public class Network {
         getMessageHistory(channel, 0);
     }
 
-    public static void createWebsocket() {
+    public static void createClient() {
+        Log.i(Network.class.getName(), "Creating HTTP client");
 
-        Log.i(Network.class.getName(), "Opening websocket connection");
-
-        URI serverUri;
+        URL serverUrl;
 
         try {
-            serverUri = new URI("ws://10.0.1.152:8174");
-        } catch (URISyntaxException e) {
+            serverUrl = new URL("http://localhost:8192");
+        } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
 
-        webSocket = new SpielWebSocketClient(serverUri);
-        webSocket.connect();
+        httpClient = new SpielHttpClient(serverUrl);
     }
 
-    public static WebSocketClient getWebSocket() {
-        return webSocket;
+    public static SpielHttpClient getClient() {
+        return httpClient;
     }
 
     public static Packet receive(UUID id) {

@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setListeners();
 
-        Network.createWebsocket();
+        Network.createClient();
     }
 
     private void setListeners() {
